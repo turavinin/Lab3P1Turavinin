@@ -37,6 +37,9 @@ let modificarFormBtn = document.getElementById("modificar");
 let eliminarFormBtn = document.getElementById("eliminar");
 let cancelarBtn = document.getElementById("cancelar");
 
+let calcularBtn = document.getElementById("calcularBtn");
+let inCalculo = document.getElementById("inPromedio");
+
 
 // CLASES
 class Persona {
@@ -673,6 +676,14 @@ function MostrarOcultarBotonesForm(esEditar = false)
     }
 }
 
+// CALCULO
+function CalcularIds() {
+    let sumIds = arrayPersonas.map((e) => { return e.id } ).reduce((preVal, val) => preVal + val);
+
+    let promedio = sumIds / arrayPersonas.length;
+    inCalculo.value = parseFloat(promedio).toFixed( 2 );
+}
+
 
 // INICIAR
 function Iniciar()
@@ -741,4 +752,8 @@ eliminarFormBtn.addEventListener('click', function(){
 
 cancelarBtn.addEventListener("click", function(){
     OcultarForm();
+})
+
+calcularBtn.addEventListener("click", function(){
+    CalcularIds();
 })

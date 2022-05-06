@@ -30,7 +30,7 @@ main {
     /* flex-direction: column; */
     align-items: center;
     justify-content: flex-start;
-    width: 80vw;
+    width: 90vw;
     height: 10vh;
     background-color: #7bb080;
 }
@@ -48,6 +48,10 @@ main {
     margin-left: 10px;
 }
 
+#calculo{
+    margin-left: 50px;
+}
+
 
 /* TABLE */
 #table-warepper{
@@ -55,7 +59,7 @@ main {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 80vw;
+    width: 90vw;
     height: 50vh;
     background-color: #b3bab3;
 }
@@ -67,7 +71,6 @@ main {
     justify-content: flex-start;
     width: 100%;
     height: auto;
-    /* border: 2px solid black; */
 }
 
 #table-thead{
@@ -196,4 +199,8 @@ ul {
     color: #666;
     box-shadow: inset 4px 4px 12px #898989,
                 inset -4px -4px 12px #555454;
+}
+
+#inId{
+    background-color: rgb(184, 183, 183);
 }
