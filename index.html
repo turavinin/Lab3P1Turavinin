@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="./styles.css" media="all" />
+    <title>Practica Parcial</title>
+  </head>
+  <body>
+    <main>
+      <!-- ----OPTIONS---- -->
+      <div id="options">
+        <div id="combo-box">
+            <p id="combo-box-title">FILTRAR POR:</p>
+            <select id="combo-box-select">
+                <option value="1" selected>Todos</option>
+                <option value="2">Cliente</option>
+                <option value="3">Empleado</option>
+            </select>
+        </div>
+        <div id="checkboxes">
+            <input type="checkbox" name="check" id="cbox1" value="id" checked><label for="cbox1">ID</label>
+            <input type="checkbox" name="check" id="cbox2" value="apellido" checked><label for="cbox2">APELLIDO</label>
+            <input type="checkbox" name="check" id="cbox3" value="nombre" checked><label for="cbox3">NOMBRE</label>
+            <input type="checkbox" name="check" id="cbox4" value="edad" checked><label for="cbox4">EDAD</label>
+            <input type="checkbox" name="check" id="cbox5" value="sexo" checked><label for="cbox5">SEXO</label>
+            <input type="checkbox" name="check" id="cbox6" value="cuil" checked><label for="cbox6">CUIL</label>
+            <input type="checkbox" name="check" id="cbox7" value="sueldo" checked><label for="cbox7">SUELDO</label>
+        </div>
+      </div>
+      <!-- ----TABLE---- -->
+      <div id="table-warepper">
+        <table id="table">
+            <!-- <thead id="table-thead">
+                <tr id="tr">
+                    <th id="th-td">ID</th>
+                    <th id="th-td">APELLIDO</th>
+                    <th id="th-td">NOMBRE</th>
+                    <th id="th-td">EDAD</th>
+                    <th id="th-td">SEXO</th>
+                    <th id="th-td">CUIL</th>
+                    <th id="th-td">SUELDO</th>
+                  </tr>
+            </thead> -->
+            <tbody id="table-tbody">
+                <!-- <tr id="tr">
+                    <td id="th-td">1</td>
+                    <td id="th-td">asdasda</td>
+                    <td id="th-td">asdasdas</td>
+                    <td id="th-td">222</td>
+                    <td id="th-td">f</td>
+                    <td id="th-td">22222</td>
+                    <td id="th-td">2222</td>
+                </tr>
+                <tr id="tr">
+                    <td id="th-td">1</td>
+                    <td id="th-td">asdasda</td>
+                    <td id="th-td">asdasdas</td>
+                    <td id="th-td">222</td>
+                    <td id="th-td">f</td>
+                    <td id="th-td">22222</td>
+                    <td id="th-td">2222</td>
+                </tr> -->
+            </tbody>
+        </table>
+        <button id="agregarBtn" type="button">AGREGAR</button>
+      </div>
+
+      <!-- ----FORM---- -->
+      <div id="form-wrapper">
+        <form id="form">
+          <h1 id="headerForm">FORM PERSONAS</h1>
+          <ul>
+            <!-- ID -->
+            <li>
+              <label for="inId">
+                <p class="form-label-title">Id: </p>
+                <input type="text", id="inId", name="inId" readonly>
+              </label>
+            </li>
+
+             <!-- APELLIDO -->
+             <li>
+              <label for="inApellido">
+                <p class="form-label-title">Apellido: </p>
+                <input type="text", id="inApellido", name="inApellido">
+              </label>
+            </li>
+
+            <!-- NOMBRE -->
+             <li>
+              <label for="inNombre">
+                <p class="form-label-title">Nombre: </p>
+                <input type="text", id="inNombre", name="inNombre">
+              </label>
+            </li>
+
+            <div id="combo-box-form">
+              <p id="combo-box-title-form">TIPO:</p>
+              <select id="combo-box-select-form">
+                  <option value="2" selected >Cliente</option>
+                  <option value="3">Empleado</option>
+              </select>
+            </div>
+
+            <div id="camposFormCliente">
+            <!-- EDAD -->
+             <li>
+              <label for="inEdad">
+                <p class="form-label-title">Edad: </p>
+                <input type="text", id="inEdad", name="inEdad">
+              </label>
+            </li>
+
+            <!-- SEXO -->
+            <li>
+              <label for="inSexo">
+                <p class="form-label-title">Sexo: </p>
+                <input type="text", id="inSexo", name="inSexo">
+              </label>
+            </li>
+          </div>
+
+            <div id="camposFormEmpleado">
+            <!-- CUIL -->
+            <li>
+              <label for="inCuil">
+                <p class="form-label-title">Cuil: </p>
+                <input type="text", id="inCuil", name="inCuil">
+              </label>
+            </li>
+
+            <!-- SUELDO -->
+            <li>
+              <label for="inSueldo">
+                <p class="form-label-title">Sueldo: </p>
+                <input type="text", id="inSueldo", name="inSueldo">
+              </label>
+            </li>
+          </div>
+
+          </ul>
+        </form>
+
+        <div id="form-buttons-wrapper">
+          <button id="agregar" class="formBtn">AGREGAR PERSONA</button>
+          <button id="modificar" class="formBtn">MODIFICAR PERSONA</button>
+          <button id="eliminar" class="formBtn">ELIMINAR PERSONA</button>
+          <button id="cancelar" class="formBtn">CANCELAR</button>
+        </div>
+      </div>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>
