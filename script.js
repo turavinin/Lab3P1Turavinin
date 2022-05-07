@@ -510,6 +510,8 @@ function AgregarPersonaConNuevoId(persona)
     persona.id = maxId + 1;
 
     arrayPersonas.push(persona);
+
+    console.log(persona.toString());
 }
 
 function ValidarData(personaObj, tipoPersona)
@@ -714,7 +716,6 @@ function RecargarEventoHeadersButton() {
         element.addEventListener('click', function()
         {
             OrdernarRegistros(element.attributes["name"].value)
-            console.log(element.attributes["name"].value);
         })
     })
 }
