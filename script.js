@@ -226,17 +226,17 @@ function LlenarTabla(arrayPersonas, filtroSeleccionado)
         if(persona instanceof Alumno && (filtroSeleccionado == 2 || filtroSeleccionado == 1))
         {
             arrayTd = new Array();
-            EvaluarColumnaYPushearTd(arrayTd, "id", persona.id);
-            EvaluarColumnaYPushearTd(arrayTd, "dni", persona.dni);
-            EvaluarColumnaYPushearTd(arrayTd, "apellido", persona.apellido);
-            EvaluarColumnaYPushearTd(arrayTd, "nombre", persona.nombre);
-            EvaluarColumnaYPushearTd(arrayTd, "cursoLetra", persona.cursoLetra);
-            EvaluarColumnaYPushearTd(arrayTd, "cursoNumero", persona.cursoNumero);
+            EvaluarColumnaYPushearTd(arrayTd, "id", persona.id, persona.id);
+            EvaluarColumnaYPushearTd(arrayTd, "dni", persona.dni, persona.id);
+            EvaluarColumnaYPushearTd(arrayTd, "apellido", persona.apellido, persona.id);
+            EvaluarColumnaYPushearTd(arrayTd, "nombre", persona.nombre, persona.id);
+            EvaluarColumnaYPushearTd(arrayTd, "cursoLetra", persona.cursoLetra, persona.id);
+            EvaluarColumnaYPushearTd(arrayTd, "cursoNumero", persona.cursoNumero, persona.id);
 
             if(filtroSeleccionado == 1)
             {
-                EvaluarColumnaYPushearTd(arrayTd, "materia", "N/A");
-                EvaluarColumnaYPushearTd(arrayTd, "año", "N/A");
+                EvaluarColumnaYPushearTd(arrayTd, "materia", "N/A", persona.id);
+                EvaluarColumnaYPushearTd(arrayTd, "año", "N/A", persona.id);
             }
             
             AppendChilds(tr, arrayTd);
@@ -245,19 +245,19 @@ function LlenarTabla(arrayPersonas, filtroSeleccionado)
         else if(persona instanceof Docente && (filtroSeleccionado == 3 || filtroSeleccionado == 1))
         {
             arrayTd = new Array();
-            EvaluarColumnaYPushearTd(arrayTd, "id", persona.id);
-            EvaluarColumnaYPushearTd(arrayTd, "dni", persona.dni);
-            EvaluarColumnaYPushearTd(arrayTd, "apellido", persona.apellido);
-            EvaluarColumnaYPushearTd(arrayTd, "nombre", persona.nombre);
+            EvaluarColumnaYPushearTd(arrayTd, "id", persona.id, persona.id);
+            EvaluarColumnaYPushearTd(arrayTd, "dni", persona.dni, persona.id);
+            EvaluarColumnaYPushearTd(arrayTd, "apellido", persona.apellido, persona.id);
+            EvaluarColumnaYPushearTd(arrayTd, "nombre", persona.nombre, persona.id);
 
             if(filtroSeleccionado == 1)
             {
-                EvaluarColumnaYPushearTd(arrayTd, "cursoLetra", "N/A");
-                EvaluarColumnaYPushearTd(arrayTd, "cursoNumero", "N/A");
+                EvaluarColumnaYPushearTd(arrayTd, "cursoLetra", "N/A", persona.id);
+                EvaluarColumnaYPushearTd(arrayTd, "cursoNumero", "N/A", persona.id);
             }
 
-            EvaluarColumnaYPushearTd(arrayTd, "materia", persona.materia);
-            EvaluarColumnaYPushearTd(arrayTd, "año", persona.año);
+            EvaluarColumnaYPushearTd(arrayTd, "materia", persona.materia, persona.id);
+            EvaluarColumnaYPushearTd(arrayTd, "año", persona.año, persona.id);
 
             AppendChilds(tr, arrayTd);
             tBody.appendChild(tr);
@@ -265,6 +265,16 @@ function LlenarTabla(arrayPersonas, filtroSeleccionado)
 
         table.appendChild(tBody);
     });
+}
+
+function EvaluarColumnaYPushearTd(arrayTd, columnaEvaluada, valorElemento, idElemento)
+{
+    let indexOfCheckbox = GetIndexOfElementInNodeList(columnaEvaluada);
+    if(checkBoxes[indexOfCheckbox].checked == true)
+    {
+        let td = CrearElementoConIdYTexto("td", "th-td", valorElemento, false, idElemento);
+        arrayTd.push(td);
+    }
 }
 
 function CrearElementoConIdYTexto(elemento, id, texto, esButton = false, name = null)
@@ -286,16 +296,6 @@ function CrearElementoConIdYTexto(elemento, id, texto, esButton = false, name = 
     }
 
     return element;
-}
-
-function EvaluarColumnaYPushearTd(arrayTd, columnaEvaluada, valorElemento)
-{
-    let indexOfCheckbox = GetIndexOfElementInNodeList(columnaEvaluada);
-    if(checkBoxes[indexOfCheckbox].checked == true)
-    {
-        let td = CrearElementoConIdYTexto("td", "th-td", valorElemento, false, columnaEvaluada);
-        arrayTd.push(td);
-    }
 }
 
 function AppendChilds(parentElement, arrayOfElements)
@@ -726,7 +726,7 @@ function CrearEventoTableRow()
 
     Array.from(rowsTabla).forEach(row => {
         row.addEventListener('dblclick', function(){
-            IniciarForm(0, true, row.firstChild.textContent);
+            IniciarForm(0, true, row.firstChild.attributes["name"].value);
         })
     });
 }
