@@ -506,7 +506,12 @@ function GetData(validar = true){
 function AgregarPersonaConNuevoId(persona)
 {
     let idsArr = arrayPersonas.map(function(a) {return a.id});
-    let maxId = Math.max.apply(null, idsArr);
+    let maxId = 0;
+
+    if(idsArr.length > 0) {
+        maxId = Math.max.apply(null, idsArr);
+    }
+
     persona.id = maxId + 1;
 
     arrayPersonas.push(persona);
@@ -568,7 +573,7 @@ function ValidarData(personaObj, tipoPersona)
 
 function StringValido(string)
 {
-    if(string == null || string == undefined || string == '' || string == " ")
+    if(string == null || string == undefined || string.trim() == "")
     {
         return false;
     }
@@ -680,9 +685,15 @@ function MostrarOcultarBotonesForm(esEditar = false)
 
 // CALCULO
 function CalcularIds() {
-    let sumIds = arrayPersonas.map((e) => { return e.id } ).reduce((preVal, val) => preVal + val);
+    let ids = arrayPersonas.map((e) => { return e.id } );
+    let sumId = 0;
+    let promedio = 0;
 
-    let promedio = sumIds / arrayPersonas.length;
+    if(ids.length > 0) {
+        sumId = ids.reduce((preVal, val) => preVal + val);
+        promedio = sumId / arrayPersonas.length;
+    }
+
     inCalculo.value = parseFloat(promedio).toFixed( 2 );
 }
 
